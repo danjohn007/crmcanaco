@@ -1,0 +1,338 @@
+/**
+ * Custom CSS for CRM CANACO
+ * Green and white theme inspired by camaradecomercioqro.mx
+ */
+
+:root {
+    --canaco-green: #2E8B57; /* Sea Green */
+    --canaco-green-dark: #1F5F3F;
+    --canaco-green-light: #90EE90;
+    --canaco-white: #FFFFFF;
+    --canaco-gray-light: #F8F9FA;
+    --canaco-gray: #6C757D;
+    --canaco-success: #28A745;
+    --canaco-warning: #FFC107;
+    --canaco-danger: #DC3545;
+    --canaco-info: #17A2B8;
+}
+
+/* Body and general styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--canaco-gray-light);
+    color: #333;
+}
+
+/* Navigation styles */
+.bg-canaco {
+    background: linear-gradient(135deg, var(--canaco-green) 0%, var(--canaco-green-dark) 100%) !important;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+/* Button styles */
+.btn-canaco {
+    background: linear-gradient(135deg, var(--canaco-green) 0%, var(--canaco-green-dark) 100%);
+    border: none;
+    color: white;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-canaco:hover {
+    background: linear-gradient(135deg, var(--canaco-green-dark) 0%, var(--canaco-green) 100%);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(46, 139, 87, 0.3);
+}
+
+.btn-outline-canaco {
+    border: 2px solid var(--canaco-green);
+    color: var(--canaco-green);
+    background: transparent;
+    font-weight: 500;
+}
+
+.btn-outline-canaco:hover {
+    background-color: var(--canaco-green);
+    color: white;
+    border-color: var(--canaco-green);
+}
+
+/* Text colors */
+.text-canaco {
+    color: var(--canaco-green) !important;
+}
+
+.text-canaco-dark {
+    color: var(--canaco-green-dark) !important;
+}
+
+/* Login page styles */
+.login-container {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, var(--canaco-green-light) 0%, var(--canaco-white) 50%, var(--canaco-green-light) 100%);
+}
+
+.login-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem 0;
+    background-color: var(--canaco-white);
+    border-top: 1px solid #e9ecef;
+}
+
+/* Card styles */
+.card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-header {
+    background: linear-gradient(135deg, var(--canaco-green) 0%, var(--canaco-green-dark) 100%);
+    color: white;
+    border-bottom: none;
+    font-weight: 600;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Form styles */
+.form-control:focus {
+    border-color: var(--canaco-green);
+    box-shadow: 0 0 0 0.2rem rgba(46, 139, 87, 0.25);
+}
+
+.input-group-text {
+    background-color: var(--canaco-gray-light);
+    border-color: #ced4da;
+    color: var(--canaco-green);
+}
+
+/* Dashboard styles */
+.dashboard-card {
+    transition: transform 0.2s ease;
+    border-left: 4px solid var(--canaco-green);
+}
+
+.dashboard-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card {
+    background: linear-gradient(135deg, var(--canaco-white) 0%, var(--canaco-gray-light) 100%);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--canaco-green);
+}
+
+.stat-label {
+    color: var(--canaco-gray);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+/* Table styles */
+.table {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.table thead th {
+    background-color: var(--canaco-green);
+    color: white;
+    border: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(46, 139, 87, 0.05);
+}
+
+/* Badge styles */
+.badge {
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.badge-canaco {
+    background-color: var(--canaco-green);
+    color: white;
+}
+
+/* Alert styles */
+.alert-canaco {
+    background-color: rgba(46, 139, 87, 0.1);
+    border-color: var(--canaco-green);
+    color: var(--canaco-green-dark);
+}
+
+/* Progress bars */
+.progress {
+    height: 8px;
+    border-radius: 4px;
+    background-color: #e9ecef;
+}
+
+.progress-bar-canaco {
+    background: linear-gradient(90deg, var(--canaco-green) 0%, var(--canaco-green-dark) 100%);
+}
+
+/* Customer Journey styles */
+.journey-stage {
+    background: linear-gradient(135deg, var(--canaco-white) 0%, var(--canaco-gray-light) 100%);
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.journey-stage.active {
+    border-color: var(--canaco-green);
+    background: linear-gradient(135deg, var(--canaco-green) 0%, var(--canaco-green-dark) 100%);
+    color: white;
+}
+
+.journey-stage:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.journey-arrow {
+    font-size: 1.5rem;
+    color: var(--canaco-green);
+    margin: 0 1rem;
+}
+
+/* Calendar styles */
+.calendar-day {
+    border: 1px solid #e9ecef;
+    padding: 0.5rem;
+    min-height: 80px;
+    background-color: white;
+}
+
+.calendar-day.today {
+    background-color: rgba(46, 139, 87, 0.1);
+    border-color: var(--canaco-green);
+}
+
+.calendar-event {
+    background-color: var(--canaco-green);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    margin-bottom: 2px;
+    display: block;
+    text-decoration: none;
+}
+
+.calendar-event:hover {
+    background-color: var(--canaco-green-dark);
+    color: white;
+}
+
+/* Footer styles */
+.footer {
+    background-color: var(--canaco-gray-light);
+    border-top: 1px solid #e9ecef;
+    margin-top: 3rem;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .journey-stage {
+        margin-bottom: 1rem;
+    }
+    
+    .journey-arrow {
+        display: none;
+    }
+}
+
+/* Search styles */
+.search-box {
+    background-color: white;
+    border-radius: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.search-box .form-control {
+    border: none;
+    background: transparent;
+    padding: 0.75rem 1.5rem;
+}
+
+.search-box .btn {
+    border: none;
+    background: var(--canaco-green);
+    color: white;
+    border-radius: 0 25px 25px 0;
+}
+
+/* Notification styles */
+.notification-item {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e9ecef;
+    transition: background-color 0.2s ease;
+}
+
+.notification-item:hover {
+    background-color: var(--canaco-gray-light);
+}
+
+.notification-item.unread {
+    background-color: rgba(46, 139, 87, 0.05);
+    border-left: 3px solid var(--canaco-green);
+}
+
+/* Loading spinner */
+.spinner-canaco {
+    border: 3px solid rgba(46, 139, 87, 0.3);
+    border-radius: 50%;
+    border-top: 3px solid var(--canaco-green);
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
