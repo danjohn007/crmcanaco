@@ -1,6 +1,30 @@
 <?php
+// Ensure session is started
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 $title = 'Dashboard - CRM CANACO';
 ob_start();
+
+// Helper function to get role name
+if (!function_exists('getRoleName')) {
+    function getRoleName($role) {
+        $roleNames = [
+            'admin' => 'Administrador',
+            'jefe_afiliadores' => 'Jefe de Afiliadores',
+            'afiliador' => 'Afiliador',
+            'administrativo' => 'Administrativo',
+            'consejero' => 'Consejero',
+            'mesa_directiva' => 'Mesa Directiva',
+            'contabilidad' => 'Contabilidad',
+            'auxiliar_contabilidad' => 'Auxiliar de Contabilidad',
+            'atencion_clientes' => 'Atención a Clientes'
+        ];
+        
+        return $roleNames[$role] ?? $role;
+    }
+}
 ?>
 
 <div class="container-fluid">
@@ -9,10 +33,10 @@ ob_start();
         <div class="col-12">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <h1 class="h3 text-canaco mb-1">¡Bienvenido, <?php echo htmlspecialchars($_SESSION['full_name']); ?>!</h1>
+                    <h1 class="h3 text-canaco mb-1">¡Bienvenido, <?php echo htmlspecialchars(isset($_SESSION['full_name']) ? $_SESSION['full_name'] : 'Usuario'); ?>!</h1>
                     <p class="text-muted mb-0">
                         <?php echo date('l, j \d\e F \d\e Y'); ?> • 
-                        <?php echo $this->userModel->getRoleName($currentUser['role']); ?>
+                        <?php echo isset($currentUser['role']) ? getRoleName($currentUser['role']) : 'Sin rol'; ?>
                     </p>
                 </div>
                 <div>
