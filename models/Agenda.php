@@ -68,25 +68,25 @@ class Agenda {
 
     public function getTodayAgenda($userId) {
         $sql = "SELECT a.*, p.commercial_name, p.contact_name,
-                       CONCAT(u.first_name, ' ', u.last_name) as assigned_name
+                       (u.first_name || ' ' || u.last_name) as assigned_name
                 FROM agenda a 
                 LEFT JOIN prospects p ON a.prospect_id = p.id
                 LEFT JOIN users u ON a.assigned_to = u.id
                 WHERE a.assigned_to = ? 
-                AND DATE(a.scheduled_date) = CURRENT_DATE()
+                AND date(a.scheduled_date) = date('now')
                 ORDER BY a.scheduled_date ASC";
         return $this->db->fetchAll($sql, [$userId]);
     }
 
     public function getPendingTasks($userId, $limit = null) {
         $sql = "SELECT a.*, p.commercial_name, p.contact_name,
-                       CONCAT(u.first_name, ' ', u.last_name) as assigned_name
+                       (u.first_name || ' ' || u.last_name) as assigned_name
                 FROM agenda a 
                 LEFT JOIN prospects p ON a.prospect_id = p.id
                 LEFT JOIN users u ON a.assigned_to = u.id
                 WHERE a.assigned_to = ? 
                 AND a.status = 'pendiente'
-                AND a.scheduled_date >= NOW()
+                AND a.scheduled_date >= datetime('now')
                 ORDER BY a.scheduled_date ASC";
         
         if ($limit) {
@@ -98,13 +98,13 @@ class Agenda {
 
     public function getOverdueTasks($userId) {
         $sql = "SELECT a.*, p.commercial_name, p.contact_name,
-                       CONCAT(u.first_name, ' ', u.last_name) as assigned_name
+                       (u.first_name || ' ' || u.last_name) as assigned_name
                 FROM agenda a 
                 LEFT JOIN prospects p ON a.prospect_id = p.id
                 LEFT JOIN users u ON a.assigned_to = u.id
                 WHERE a.assigned_to = ? 
                 AND a.status = 'pendiente'
-                AND a.scheduled_date < NOW()
+                AND a.scheduled_date < datetime('now')
                 ORDER BY a.scheduled_date ASC";
         return $this->db->fetchAll($sql, [$userId]);
     }
@@ -120,7 +120,7 @@ class Agenda {
         $sql = "SELECT COUNT(*) as count FROM agenda 
                 WHERE assigned_to = ? 
                 AND status = 'completada' 
-                AND DATE(completed_date) = CURRENT_DATE()";
+                AND date(completed_date) = date('now')";
         $result = $this->db->fetchOne($sql, [$userId]);
         return $result['count'];
     }

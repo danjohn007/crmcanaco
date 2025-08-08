@@ -9,7 +9,12 @@ class Database {
     private $connection;
 
     private function __construct() {
-        require_once __DIR__ . '/../config/database.php';
+        // Use development database for testing
+        if (file_exists(__DIR__ . '/../config/database_dev.php')) {
+            require_once __DIR__ . '/../config/database_dev.php';
+        } else {
+            require_once __DIR__ . '/../config/database.php';
+        }
         $this->connection = $pdo;
     }
 

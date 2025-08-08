@@ -70,7 +70,7 @@ class User {
     }
 
     public function updateLastLogin($userId) {
-        $sql = "UPDATE users SET last_login = NOW() WHERE id = ?";
+        $sql = "UPDATE users SET last_login = datetime('now') WHERE id = ?";
         return $this->db->query($sql, [$userId]);
     }
 

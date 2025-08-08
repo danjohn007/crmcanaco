@@ -98,8 +98,8 @@ class Prospect {
 
     public function getNewThisMonth() {
         $sql = "SELECT COUNT(*) as count FROM prospects 
-                WHERE MONTH(created_at) = MONTH(CURRENT_DATE()) 
-                AND YEAR(created_at) = YEAR(CURRENT_DATE())";
+                WHERE strftime('%m', created_at) = strftime('%m', 'now') 
+                AND strftime('%Y', created_at) = strftime('%Y', 'now')";
         $result = $this->db->fetchOne($sql);
         return $result['count'];
     }
@@ -107,7 +107,7 @@ class Prospect {
     public function getActiveMembersCount() {
         $sql = "SELECT COUNT(*) as count FROM prospects 
                 WHERE is_member = 1 
-                AND (membership_expiry IS NULL OR membership_expiry >= CURRENT_DATE())";
+                AND (membership_expiry IS NULL OR membership_expiry >= date('now'))";
         $result = $this->db->fetchOne($sql);
         return $result['count'];
     }
@@ -167,16 +167,16 @@ class Prospect {
     public function getMonthlyAffiliations() {
         $sql = "SELECT COUNT(*) as count FROM prospects 
                 WHERE is_member = 1 
-                AND MONTH(created_at) = MONTH(CURRENT_DATE()) 
-                AND YEAR(created_at) = YEAR(CURRENT_DATE())";
+                AND strftime('%m', created_at) = strftime('%m', 'now') 
+                AND strftime('%Y', created_at) = strftime('%Y', 'now')";
         $result = $this->db->fetchOne($sql);
         return $result['count'];
     }
 
     public function getSIEMRegistrationsMonth() {
         $sql = "SELECT COUNT(*) as count FROM siem_registrations 
-                WHERE MONTH(registration_date) = MONTH(CURRENT_DATE()) 
-                AND YEAR(registration_date) = YEAR(CURRENT_DATE())";
+                WHERE strftime('%m', registration_date) = strftime('%m', 'now') 
+                AND strftime('%Y', registration_date) = strftime('%Y', 'now')";
         $result = $this->db->fetchOne($sql);
         return $result['count'];
     }

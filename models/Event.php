@@ -52,18 +52,18 @@ class Event {
 
     public function getUpcomingEvents($limit = 10) {
         $sql = "SELECT e.*, u.first_name, u.last_name,
-                       CONCAT(u.first_name, ' ', u.last_name) as created_by_name,
+                       (u.first_name || ' ' || u.last_name) as created_by_name,
                        (SELECT COUNT(*) FROM event_attendees ea WHERE ea.event_id = e.id) as attendee_count
                 FROM events e 
                 LEFT JOIN users u ON e.created_by = u.id 
-                WHERE e.start_date >= NOW()
+                WHERE e.start_date >= datetime('now')
                 ORDER BY e.start_date ASC 
                 LIMIT ?";
         return $this->db->fetchAll($sql, [$limit]);
     }
 
     public function getUpcomingCount() {
-        $sql = "SELECT COUNT(*) as count FROM events WHERE start_date >= NOW()";
+        $sql = "SELECT COUNT(*) as count FROM events WHERE start_date >= datetime('now')";
         $result = $this->db->fetchOne($sql);
         return $result['count'];
     }
