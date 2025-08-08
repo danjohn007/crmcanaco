@@ -1,0 +1,48 @@
+# Development files
+data/
+*.sqlite
+*.txt
+test_db.sqlite
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Upload directories
+uploads/
+files/
+
+# Cache directories
+cache/
+
+# Session files
+sessions/
